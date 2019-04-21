@@ -10,9 +10,9 @@ namespace EmailBuilder.BuildDirector
     {
         private readonly IEmailBuilder emailBuilder;
 
-        public EmailDirector()
+        public EmailDirector(IEmailBuilder emailBuilder)
         {
-            this.emailBuilder = new LocalEmailBuilder();
+            this.emailBuilder = emailBuilder;
         }
 
         public Email BuildEmail(Person sender, Person receiver, string subject, string message)
