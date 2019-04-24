@@ -1,4 +1,5 @@
 ﻿using RegisterApp.Controllers;
+using RegisterApp.Factories;
 using RegisterApp.Models;
 using RegisterApp.Services;
 
@@ -9,7 +10,8 @@ namespace RegisterApp
         static void Main(string[] args)
         {
             var userService = new UserService();
-            var controller = new UserController(userService);
+            var registrationSpecificationFactory = new RegistrationSpecificationFactory();
+            var controller = new UserController(userService, registrationSpecificationFactory);
 
             var user = new UserRegistrationRequest("shairhem","shairhem@gmail.com","password","password");
             controller.RegisterUser(user);
