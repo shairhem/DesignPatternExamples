@@ -18,12 +18,8 @@ namespace RegisterApp.Controllers
 
         public void RegisterUser(UserRegistrationRequest request)
         {
-            var validEmail = new ValidEmailSpecification();
-            var validUsername = new ValidUsernameSpecification();
-            var validPassword = new ValidPasswordSpecification();
-            var passwordConfirmed = new PasswordConfirmedSpecification();
-            var validRequest = validEmail.And(validUsername).And(validPassword).And(passwordConfirmed);
-            if (validRequest.IsSatisfiedBy(request))
+            var spec = new CanRegisterSpecification();
+            if (spec.IsSatisfiedBy(request))
             {
                 var user = new User() { Username = request.Username, Email = request.Email, Password = request.Password };
                 this.userService.RegisterUser(user);

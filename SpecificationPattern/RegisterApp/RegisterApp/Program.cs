@@ -10,8 +10,21 @@ namespace RegisterApp
         {
             var userService = new UserService();
             var controller = new UserController(userService);
+
             var user = new UserRegistrationRequest("shairhem","shairhem@gmail.com","password","password");
             controller.RegisterUser(user);
+
+            var user1 = new UserRegistrationRequest("", "shairhem@gmail.com", "password", "password");
+            controller.RegisterUser(user1);
+
+            var user2 = new UserRegistrationRequest("shairhem", "shairhem.com", "password", "password");
+            controller.RegisterUser(user2);
+
+            var user3 = new UserRegistrationRequest("shairhem", "shairhem.com", "password", "");
+            controller.RegisterUser(user3);
+
+            var user4 = new UserRegistrationRequest("shairhem", "shairhem.com", "", "");
+            controller.RegisterUser(user4);
         }
     }
 }
